@@ -31,7 +31,7 @@ function onSuccess(message) {
   console.log('onSuccess: ' + JSON.stringify(message));
 
   if (message['type'] == 'load') {
-    $('#kill').prop('disabled', false);
+      
     $('#post-note').show();
   }
 }
@@ -39,7 +39,6 @@ function onSuccess(message) {
 function onStopAppSuccess() {
   console.log('onStopAppSuccess');
 
-  $('#kill').prop('disabled', true);
   $('#post-note').hide();
 }
 

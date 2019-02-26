@@ -1,50 +1,98 @@
 <html>
-  <head>
+
+<head>
     <title>Chromecast dashboard</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
 
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Cabin+Condensed:700">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
-  </head>
-  <body>
-    <p>
-      Enter a Url for to display on dashboard and if the page does not update
-      itself then enter an appropriate refresh interval in seconds.
-    </p>
-    <form method="get" action="JavaScript:connect();">
-      <label>Url <input type="text" id="url" placeholder="http://www.gabenewell.org/"></label>
-      <button type="submit">Launch</button>
-    </form>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
+
+    <!-- Resource style -->
+    <script src="js/modernizr.js"></script>
+    <!-- Modernizr -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Cabin+Condensed:700" />
+
+
+    <link rel="stylesheet" href="main.css" />
+
+
+    <script type="text/javascript" src="//www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
+
+</head>
+
+<body class="siteWrapper">
+
+    <div class="container">
+
+        <div class="row text-center">
+            <img class="logo" src="//static.mykaarma.com/res/myk/img/logo-dark.png" alt="myKaarma">
+        </div>
+
+        <section class="row">
+            <form class="col-xs-12" method="get" action="JavaScript:connect();">
+                <button class="btn btn-success col-sm-1 col-sm-offset-3 col-xs-3" type="submit">Launch</button>
+                <label class="col-sm-5 col-xs-9">
+                    <input type="text" id="url" value="http://mykaarma.com/" />
+                </label>
+            </form>
+        </section>
+
+        <section class="row">
+            <div class="col-xs-12">
+                <p class="col-sm-6 col-sm-offset-4 col-xs-12">Refresh interval (seconds).</p>
+            </div>
+            <div class="col-xs-12">
+                <button id="kill" class="btn btn-danger col-sm-1 col-sm-offset-3 col-xs-6">KILL</button>
+                <label class="col-sm-5 col-xs-9"><input type="text" id="refresh" min="0" value="0" /></label>
+                <div class="col-sm-5 col-sm-offset-4 col-xs-6">
+                    <p id="post-note" style="display: none">
+                        If the page does not load please be sure HTTP header X-Frame-Options allows the page to be loaded inside a frame not on the same origin.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+
+
+
+
     <!-- For some reason the 'number' field stops form action from firing -->
-    <label>Refresh <input type="number" id="refresh" min="0" value="0"></label>
-    <button id="kill" disabled>Stop casting</button>
-    <p id="post-note" style="display: none">
-      If the page does not load please be sure HTTP header X-Frame-Options
-      allows the page to be loaded inside a frame not on the same origin.
-    </p>
-  </body>
 
-  <!-- Post load all the goods used to interact with Chromecast/receiver. -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-  <script src="http://underscorejs.org/underscore-min.js"></script>
-  <script src="main.js"></script>
 
-  <!-- Start of StatCounter Code for Default Guide -->
-  <script type="text/javascript">
-  var sc_project=9400224;
-  var sc_invisible=1;
-  var sc_security="c2ba274b";
-  var scJsHost = (("https:" == document.location.protocol) ?
-  "https://secure." : "http://www.");
-  document.write("<sc"+"ript type='text/javascript' src='" +
-  scJsHost+
-  "statcounter.com/counter/counter.js'></"+"script>");
-  </script>
-  <noscript><div class="statcounter"><a title="free hit
+</body>
+
+<!-- Post load all the goods used to interact with Chromecast/receiver. -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="http://underscorejs.org/underscore-min.js"></script>
+<script src="main.js"></script>
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+    var sc_project = 9400224;
+    var sc_invisible = 1;
+    var sc_security = "c2ba274b";
+    var scJsHost = (("https:" == document.location.protocol) ?
+        "https://secure." : "http://www.");
+    document.write("<sc" + "ript type='text/javascript' src='" +
+        scJsHost +
+        "statcounter.com/counter/counter.js'></" + "script>");
+</script>
+<noscript><div class="statcounter"><a title="free hit
   counter" href="http://statcounter.com/free-hit-counter/"
   target="_blank"><img class="statcounter"
   src="http://c.statcounter.com/9400224/0/c2ba274b/1/"
   alt="free hit counter"></a></div></noscript>
-  <!-- End of StatCounter Code for Default Guide -->
+<!-- End of StatCounter Code for Default Guide -->
+
 </html>
